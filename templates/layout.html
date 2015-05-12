@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>MoviesDB</title>
+    <meta http-equiv="content-type" content="text/html; charset=SO8859_1">
+
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+{% block nav %}
+    {% include 'OCR/navbar.html' %}
+{% endblock %}
+
+<div class="container" style="width:100%">
+    <div class="row" style="width:100%">
+        <div class="col-md-4" style="width:10%"></div>
+        <div class="col-md-4" style="width:80%">
+            <div style="text-align:center; background-color: #00ff00; color:#000066">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class=flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            {% block main %}
+            {% endblock %}
+
+        </div>
+        <div class="col-md-4" style="width:10%"></div>
+    </div>
+</div>
+
+</body>
+</html>
